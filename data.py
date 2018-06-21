@@ -98,8 +98,8 @@ final_on = final_off = []
 msg_time = lambda st : ':'.join(map(str,st))
 final_on = [(msg_time(i)) for i in on]
 final_off = [(msg_time(i)) for i in off]
-print final_on
-print final_off
+print (final_on)
+print (final_off)
 
 				
 		
