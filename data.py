@@ -1,21 +1,18 @@
 import pandas as pd
-from openpyxl import load_workbook
 from pandas import ExcelWriter
 from pandas import ExcelFile
 from itertools import groupby,repeat 
 import numpy as np
 
-df = load_workbook(filename = "data.xlsx",read_only=True)
+df = pd.read_excel("data.xlsx")
 status_on = []
 status_off = []
 temp = []
+segreg = {}
+states = [1,0]
 thresh = 3
-for x in df :
-	for y in df.iter_rows() :
-		for cell in y :
-			print cell.value
-#status_and_time = zip(df["Status"],df["TimeStamp"])
-'''for status,time in status_and_time  :
+status_and_time = zip(df["Status"],df["TimeStamp"])
+for status,time in status_and_time  :
 	time = str(time)
 	status = int(status)
 	if status == 1 :
@@ -43,6 +40,7 @@ length_off = [(key,len(list(group))) for key, group in groupby(off)]
 for l_on,k in length_on :
 	if k < thresh :
 		on.remove(l_on)
+#YAHAN KUCH KARNA HAI
 
 for l_off,k in length_off :
 	if k < thresh :
@@ -101,7 +99,7 @@ msg_time = lambda st : ':'.join(map(str,st))
 final_on = [(msg_time(i)) for i in on]
 final_off = [(msg_time(i)) for i in off]
 print final_on
-print final_off'''
+print final_off
 
 				
 		
